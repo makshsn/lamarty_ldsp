@@ -9,7 +9,7 @@ const cols3 = `N*,D*,U`.split(",");
 const classicTemp = `•	аликанте
 •	арабика
 •	бамбук
-•	белоснежный  
+•	белоснежный
 •	белый
 •	бетон пайн белый
 •	бетон пайн экзотик
@@ -92,7 +92,7 @@ const premiumTemp = `•	айконик
 •	руанда 
 •	рускеала 	•	сепия
 •	серый камень
-•	слэйт соната
+•	слэйт •	соната
 •	сосна санторини
 •	СОУЛ
 •	софт 
@@ -151,5 +151,5 @@ for (let index = 0; index < luxTemp.length; index++) {
   }
 }
 
-console.log(premium);
+console.log(classic);
 export { xlData, cols1, cols2, cols3, classic, premium, lux };

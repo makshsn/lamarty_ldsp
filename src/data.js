@@ -6,11 +6,12 @@ function universal(xlData, cols1, classification, thickness, price) {
       xlData[indexName].Name.toLowerCase().includes(thickness.toLowerCase())
     ) {
       for (let indexColl = 0; indexColl < cols1.length; indexColl++) {
-        /*   console.log(
+        /*       console.log(
           xlData[indexName].Name.split("2750*1830")[1]
             .split(" ")[2]
             .toLowerCase()
-        ); */ for (
+        ); */
+        for (
           let indexClass = 0;
           indexClass < classification.length;
           indexClass++
@@ -18,19 +19,20 @@ function universal(xlData, cols1, classification, thickness, price) {
           if (
             xlData[indexName].Name.split("2750*1830")[1]
               .split(" ")[1]
-              .toLowerCase()
-              .includes(cols1[indexColl].toLowerCase()) &&
+              .toLowerCase() == cols1[indexColl].toLowerCase() &&
             (
               xlData[indexName].Name.split("2750*1830")[1].split(" ")[2] +
               " " +
-              xlData[indexName].Name.split("2750*1830")[1].split(" ")[3]
+              xlData[indexName].Name.split("2750*1830")[1].split(" ")[3] +
+              " " +
+              xlData[indexName].Name.split("2750*1830")[1].split(" ")[4]
             )
               .toLowerCase()
               .includes(classification[indexClass].toLowerCase())
           ) {
             //console.log(cols1[indexColl].toLowerCase());
             data.push({ name: xlData[indexName].Name, price: price });
-            //console.log(data);
+            //console.log(xlData[indexName].Name);
           }
         }
       }
@@ -38,11 +40,11 @@ function universal(xlData, cols1, classification, thickness, price) {
   }
 }
 /* console.log(
-  "ЛДСП 22 Ст1 P2 Е0,5 2750*1830 T Береза нордик"
+  "ЛДСП 10 Ст1 Р2 Е0,5 2750*1830 U белоснежный"
     .split("2750*1830")[1]
     .split(" ")[2] +
     " " +
-    "ЛДСП 22 Ст1 P2 Е0,5 2750*1830 T Береза нордик"
+    "ЛДСП 10 Ст1 Р2 Е0,5 2750*1830 U белоснежный"
       .split("2750*1830")[1]
       .split(" ")[3]
 ); */
