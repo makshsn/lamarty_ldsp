@@ -13,8 +13,8 @@ const exportUsersToExcel = (users) => {
   const data = users.map((user) => {
     return [
       "",
-      user.id + " " + user.edIzm,
-      "м",
+      user.name,
+      "м2",
       Math.ceil(user.price),
       Math.ceil((user.price / 10) * 1.2) * 10,
       Math.ceil((user.price / 10) * 1.2) * 1.78 * 10,
