@@ -1,9 +1,9 @@
 import * as vars from "./variables.js";
 const data = [];
-function universal(xlData, cols1, cols2, cols3, classic) {
+function universal(xlData, cols1, classification, thickness, price) {
   for (let indexName = 0; indexName < xlData.length; indexName++) {
     if (
-      xlData[indexName].Name.toLowerCase().includes("ЛДСП 10".toLowerCase())
+      xlData[indexName].Name.toLowerCase().includes(thickness.toLowerCase())
     ) {
       for (let indexColl = 0; indexColl < cols1.length; indexColl++) {
         /*   console.log(
@@ -12,7 +12,7 @@ function universal(xlData, cols1, cols2, cols3, classic) {
             .toLowerCase()
         ); */ for (
           let indexClass = 0;
-          indexClass < classic.length;
+          indexClass < classification.length;
           indexClass++
         ) {
           if (
@@ -26,10 +26,10 @@ function universal(xlData, cols1, cols2, cols3, classic) {
               xlData[indexName].Name.split("2750*1830")[1].split(" ")[3]
             )
               .toLowerCase()
-              .includes(classic[indexClass])
+              .includes(classification[indexClass].toLowerCase())
           ) {
             //console.log(cols1[indexColl].toLowerCase());
-            data.push({ name: xlData[indexName].Name, price: 491 });
+            data.push({ name: xlData[indexName].Name, price: price });
             //console.log(data);
           }
         }
@@ -47,6 +47,16 @@ function universal(xlData, cols1, cols2, cols3, classic) {
       .split(" ")[3]
 ); */
 
-universal(vars.xlData, vars.cols1, vars.cols2, vars.cols3, vars.classic);
+universal(vars.xlData, vars.cols1, vars.classic, "ЛДСП 10", 491);
+universal(vars.xlData, vars.cols2, vars.classic, "ЛДСП 10", 552);
+universal(vars.xlData, vars.cols3, vars.classic, "ЛДСП 10", 623);
+
+universal(vars.xlData, vars.cols1, vars.premium, "ЛДСП 10", 551);
+universal(vars.xlData, vars.cols2, vars.premium, "ЛДСП 10", 657);
+universal(vars.xlData, vars.cols3, vars.premium, "ЛДСП 10", 728);
+
+universal(vars.xlData, vars.cols1, vars.lux, "ЛДСП 10", 591);
+universal(vars.xlData, vars.cols2, vars.lux, "ЛДСП 10", 755);
+universal(vars.xlData, vars.cols3, vars.lux, "ЛДСП 10", 826);
 
 export default data;
