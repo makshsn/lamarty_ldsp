@@ -16,8 +16,9 @@ const exportUsersToExcel = (users) => {
       user.name,
       "м2",
       Math.ceil(user.price),
-      Math.ceil((user.price / 10) * 1.2) * 10,
-      Math.ceil((user.price / 10) * 1.2) * 1.78 * 10,
+      Math.ceil((user.price / 10) * 1.4) * 10,
+      Math.ceil((user.price / 10) * 1.25) * 10,
+      Math.ceil((user.price / 10) * 1.25) * 1.78 * 10,
     ];
   });
   exportExcel(data);

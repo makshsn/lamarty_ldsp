@@ -61,4 +61,51 @@ universal(vars.xlData, vars.cols1, vars.lux, "ЛДСП 10", 591);
 universal(vars.xlData, vars.cols2, vars.lux, "ЛДСП 10", 755);
 universal(vars.xlData, vars.cols3, vars.lux, "ЛДСП 10", 826);
 
+universal(vars.xlData, vars.cols1, vars.classic, "ЛДСП 16", 536);
+universal(vars.xlData, vars.cols2, vars.classic, "ЛДСП 16", 578);
+universal(vars.xlData, vars.cols3, vars.classic, "ЛДСП 16", 641);
+
+universal(vars.xlData, vars.cols1, vars.premium, "ЛДСП 16", 586);
+universal(vars.xlData, vars.cols2, vars.premium, "ЛДСП 16", 670);
+universal(vars.xlData, vars.cols3, vars.premium, "ЛДСП 16", 734);
+
+universal(vars.xlData, vars.cols1, vars.lux, "ЛДСП 16", 640);
+universal(vars.xlData, vars.cols2, vars.lux, "ЛДСП 16", 731);
+universal(vars.xlData, vars.cols3, vars.lux, "ЛДСП 16", 791);
+
+universal(vars.xlData, vars.cols1, vars.classic, "ЛДСП 18", 564);
+universal(vars.xlData, vars.cols2, vars.classic, "ЛДСП 18", 604);
+universal(vars.xlData, vars.cols3, vars.classic, "ЛДСП 18", 669);
+
+universal(vars.xlData, vars.cols1, vars.premium, "ЛДСП 18", 612);
+universal(vars.xlData, vars.cols2, vars.premium, "ЛДСП 18", 698);
+universal(vars.xlData, vars.cols3, vars.premium, "ЛДСП 18", 761);
+
+universal(vars.xlData, vars.cols1, vars.lux, "ЛДСП 18", 664);
+universal(vars.xlData, vars.cols2, vars.lux, "ЛДСП 18", 758);
+universal(vars.xlData, vars.cols3, vars.lux, "ЛДСП 18", 818);
+
+universal(vars.xlData, vars.cols1, vars.classic, "ЛДСП 22", 633);
+universal(vars.xlData, vars.cols2, vars.classic, "ЛДСП 22", 675);
+universal(vars.xlData, vars.cols3, vars.classic, "ЛДСП 22", 738);
+
+universal(vars.xlData, vars.cols1, vars.premium, "ЛДСП 22", 727);
+universal(vars.xlData, vars.cols2, vars.premium, "ЛДСП 22", 769);
+universal(vars.xlData, vars.cols3, vars.premium, "ЛДСП 22", 832);
+
+universal(vars.xlData, vars.cols1, vars.lux, "ЛДСП 22", 758);
+universal(vars.xlData, vars.cols2, vars.lux, "ЛДСП 22", 856);
+universal(vars.xlData, vars.cols3, vars.lux, "ЛДСП 22", 920);
+
+universal(vars.xlData, vars.cols1, vars.classic, "ЛДСП 26", 722);
+universal(vars.xlData, vars.cols2, vars.classic, "ЛДСП 26", 790);
+universal(vars.xlData, vars.cols3, vars.classic, "ЛДСП 26", 859);
+
+universal(vars.xlData, vars.cols1, vars.premium, "ЛДСП 26", 793);
+universal(vars.xlData, vars.cols2, vars.premium, "ЛДСП 26", 862);
+universal(vars.xlData, vars.cols3, vars.premium, "ЛДСП 26", 929);
+
+universal(vars.xlData, vars.cols1, vars.lux, "ЛДСП 26", 819);
+universal(vars.xlData, vars.cols2, vars.lux, "ЛДСП 26", 922);
+universal(vars.xlData, vars.cols3, vars.lux, "ЛДСП 26", 1019);
 export default data;
