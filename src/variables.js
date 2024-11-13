@@ -155,5 +155,4 @@ for (let index = 0; index < luxTemp.length; index++) {
   }
 }
 
-console.log(classic);
 export { xlData, cols1, cols2, cols3, classic, premium, lux };
