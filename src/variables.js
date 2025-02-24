@@ -1,158 +1,97 @@
 import XLSX from "xlsx";
-const workbook = XLSX.readFile("./src/price/LDSP.xlsx");
-const sheet_name = workbook.SheetNames;
-const xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name[0]]);
+const SubCategoryWorkbook = XLSX.readFile("./src/price/LDSP_Groups_Designation.xlsx");
+const SubCategorySheet_name = SubCategoryWorkbook.SheetNames;
+const SubCategoryXlData = XLSX.utils.sheet_to_json(
+  SubCategoryWorkbook.Sheets[SubCategorySheet_name[0]]
+);
+const MaterialWorkbook = XLSX.readFile("./src/price/LDSP_Groups_Name.xlsx");
+const MaterialSheet_name = MaterialWorkbook.SheetNames;
+const MaterialXlData = XLSX.utils.sheet_to_json(MaterialWorkbook.Sheets[MaterialSheet_name[0]]);
 
-const cols1 = `L,R,A,F,K,O,T,P,V,А,К,О,Т,Р`.split(",");
-const cols2 = `D,N,G,US`.split(",");
-const cols3 = `N*,D*,U`.split(",");
-const classicTemp = `•	аликанте
-•	арабика
-•	бамбук
-•	белоснежный
-•	белый
-•	бетон пайн белый
-•	бетон пайн экзотик
-•	бук бавария светлый
-•	бук натур
-•	венге соренто
-•	венге темный
-•	вишня оксфорд
-•	вулканический серый
-•	выбеленное дерево
-•	вяз швейцарский
-•	дуб вотан	•	дуб дымчатый
-•	дуб молочный
-•	дуб сонома
-•	имбирь 01
-•	имбирь
-•	интра
-•	калипсо
-•	каньон ледяной
-•	каньон песчаный
-•	ледяной каньон
-•	песчаный каньон
-•	капучино
-•	кремовый 01
-•	кремовый
-•	ноче гварнери
-•	ноче мария луиза
-•	ноче экко
-•	ольха светлая	•	пальмира
-•	серый 7810
-•	сканди
-•	супер белый 
-•	эльбрус 
-•	черный
-•	черный
-•	ясень
-•	ясень борнхольм
-•	ясень светлый
-•	ясень темный
-`.split("•	");
-const premiumTemp = `•	айконик
-•	айронвуд
-•	альберо
-•	альфа
-•	алюминий
-•	АУРА
-•	белый кристалл
-•	береза мраморная
-•	береза нордик
-•	блэквуд
-•	бохо
-•	винтаж
-•	вишня гамильтон
-•	гамбия
-•	графит
-•	дельмар
-•	дуб галиано
-•	дуб кальяри
-•	дуб марсала
-•	ДУО
-•	карум
-•	кейптаун	•	клауд
-•	клио 
-•	КРАФТ
-•	КЭНДИ
-•	лайм •	либерти 
-•	ЛИЛО
-•	манго
-•	маренго 
-•	МУЗА
-•	муссон 
-•	намибия
-•	небула
-•	НЕЙРО
-•	ноче мондиале
-•	орех мармара
-•	орех неаполь
-•	ориноко 
-•	орион
-•	помпеи 
-•	ПЛЭЙН
-•	рамбла
-•	РЕЙН
-•	руанда 
-•	рускеала 	•	сепия
-•	серый камень
-•	слэйт •	соната
-•	сосна санторини
-•	СОУЛ
-•	софт 
-•	терраццо 
-•	титан
-•	трансильвания
-•	тэффи
-•	фантом
-•	Феникс
-•	флай
-•	Фламинго
-•	флекс
-•	фреска
-•	ФРОСТ
-•	хаки
-•	хронос
-•	ХЮГГЕ
-•	цемент
-•	чили
-•	этно
-`.split("•	");
-const luxTemp = `•	аметист
-•	графика
-•	гринери
-•	дуб солсбери
-•	ирис
-•	коралл
-•	магма
-•	малави
-•	одиссея 
-•	парма
-•	розовый жемчуг
-•	розовый кварц
-•	серенити
-•	скала
-•	солнечный
-•	терра 
-•	элит баттл рок
-`.split("•	");
-let classic = [];
-let premium = [];
-let lux = [];
-for (let index = 0; index < classicTemp.length; index++) {
-  if (classicTemp[index].length > 1) {
-    classic.push(classicTemp[index].replace("\n", "").replace("\t", ""));
-  }
-}
-for (let index = 0; index < premiumTemp.length; index++) {
-  if (premiumTemp[index].length > 1) {
-    premium.push(premiumTemp[index].replace("\n", "").replace("\t", ""));
-  }
-}
-for (let index = 0; index < luxTemp.length; index++) {
-  if (luxTemp[index].length > 1) {
-    lux.push(luxTemp[index].replace("\n", "").replace("\t", ""));
-  }
-}
+const DecorLuxWorkbook = XLSX.readFile("./src/price/LDSP_Decors_Lux.xlsx");
+const DecorLuxSheet_name = DecorLuxWorkbook.SheetNames;
+const DecorLuxXlData = XLSX.utils.sheet_to_json(DecorLuxWorkbook.Sheets[DecorLuxSheet_name[0]]);
 
-export { xlData, cols1, cols2, cols3, classic, premium, lux };
+let subCategoryFirst = [];
+let subCategorySecond = [];
+let subCategoryThird = [];
+
+let classicMaterial = [];
+let premiumMaterial = [];
+let luxMaterial = [];
+
+let luxFullName = [];
+let premiumFullName = [];
+let classicFullName = [];
+
+SubCategoryXlData.forEach((element) => {
+  element[1] == undefined || subCategoryFirst.push(element[1]);
+
+  element[2] == undefined || subCategorySecond.push(element[2]);
+
+  element[3] == undefined || subCategoryThird.push(element[3]);
+});
+MaterialXlData.forEach((element) => {
+  element["Премиум"] == undefined || premiumMaterial.push(element["Премиум"]);
+
+  element["Люкс"] == undefined || luxMaterial.push(element["Люкс"]);
+
+  element["Классика"] == undefined || classicMaterial.push(element["Классика"]);
+});
+
+DecorLuxXlData.forEach((element) => {
+  if (element[10] != undefined) {
+    let slpited = element[10].split(",");
+    for (let n = 0; n < slpited.length; n++) {
+      luxFullName.push({
+        Name: element["Люкс"],
+        Thickness: 10,
+        Subcategory: slpited[n],
+      });
+    }
+  }
+  if (element[16] != undefined) {
+    let slpited = element[16].split(",");
+    for (let n = 0; n < slpited.length; n++) {
+      luxFullName.push({
+        Name: element["Люкс"],
+        Thickness: 16,
+        Subcategory: slpited[n],
+      });
+    }
+  }
+  if (element[22] != undefined) {
+    let slpited = element[22].split(",");
+    for (let n = 0; n < slpited.length; n++) {
+      luxFullName.push({
+        Name: element["Люкс"],
+        Thickness: 22,
+        Subcategory: slpited[n],
+      });
+    }
+  }
+  if (element[26] != undefined) {
+    let slpited = element[26].split(",");
+    for (let n = 0; n < slpited.length; n++) {
+      luxFullName.push({
+        Name: element["Люкс"],
+        Thickness: 26,
+        Subcategory: slpited[n],
+      });
+    }
+  }
+});
+console.log(luxFullName.length);
+export {
+  SubCategoryXlData,
+  MaterialXlData,
+  subCategoryFirst,
+  subCategorySecond,
+  subCategoryThird,
+  classicMaterial,
+  premiumMaterial,
+  luxMaterial,
+  luxFullName,
+  premiumFullName,
+  classicFullName,
+};

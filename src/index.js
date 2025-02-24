@@ -1,15 +1,16 @@
 import xlsx from "xlsx";
 import path from "path";
 import data from "./data.js";
+let date = new Date();
 const exportExcel = (data) => {
   const workBook = xlsx.utils.book_new();
   const workSheetData = [...data];
   const workSheet = xlsx.utils.aoa_to_sheet(workSheetData);
   xlsx.utils.book_append_sheet(workBook, workSheet, "list");
-  xlsx.writeFile(workBook, path.resolve(`./outputFiles/excel-from-js.xlsx`));
+  xlsx.writeFile(workBook, path.resolve(`./outputFiles/LDSP_lamrty_${date.getDate}.xlsx`));
 };
 
-const exportUsersToExcel = (users) => {
+/*const exportUsersToExcel = (users) => {
   const data = users.map((user) => {
     return [
       "",
@@ -23,5 +24,5 @@ const exportUsersToExcel = (users) => {
   });
   exportExcel(data);
 };
-
-exportUsersToExcel(data);
+*/
+//exportUsersToExcel(data);
