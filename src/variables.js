@@ -1,4 +1,21 @@
 import XLSX from "xlsx";
+
+const PriceLuxWorkbook = XLSX.readFile("./src/price/LDSP_Price_Lux.xlsx");
+const PriceLuxSheet_name = PriceLuxWorkbook.SheetNames;
+const PriceLuxXlData = XLSX.utils.sheet_to_json(PriceLuxWorkbook.Sheets[PriceLuxSheet_name[0]]);
+
+const PriceClassicWorkbook = XLSX.readFile("./src/price/LDSP_Price_Classic.xlsx");
+const PriceClassicSheet_name = PriceClassicWorkbook.SheetNames;
+const PriceClassicXlData = XLSX.utils.sheet_to_json(
+  PriceClassicWorkbook.Sheets[PriceClassicSheet_name[0]]
+);
+
+const PricePremiumWorkbook = XLSX.readFile("./src/price/LDSP_Price_Premium.xlsx");
+const PricePremiumSheet_name = PricePremiumWorkbook.SheetNames;
+const PricePremiumXlData = XLSX.utils.sheet_to_json(
+  PricePremiumWorkbook.Sheets[PricePremiumSheet_name[0]]
+);
+
 const SubCategoryWorkbook = XLSX.readFile("./src/price/LDSP_Groups_Designation.xlsx");
 const SubCategorySheet_name = SubCategoryWorkbook.SheetNames;
 const SubCategoryXlData = XLSX.utils.sheet_to_json(
@@ -16,6 +33,12 @@ const DecorPremiumWorkbook = XLSX.readFile("./src/price/LDSP_Decors_Premium.xlsx
 const DecorPremiumSheet_name = DecorPremiumWorkbook.SheetNames;
 const DecorPremiumXlData = XLSX.utils.sheet_to_json(
   DecorPremiumWorkbook.Sheets[DecorPremiumSheet_name[0]]
+);
+
+const DecorClassicWorkbook = XLSX.readFile("./src/price/LDSP_Decors_Classic.xlsx");
+const DecorClassicSheet_name = DecorClassicWorkbook.SheetNames;
+const DecorClassicXlData = XLSX.utils.sheet_to_json(
+  DecorClassicWorkbook.Sheets[DecorClassicSheet_name[0]]
 );
 
 let subCategoryFirst = [];
@@ -53,6 +76,7 @@ DecorLuxXlData.forEach((element) => {
         Name: element["Люкс"],
         Thickness: 10,
         Subcategory: slpited[n],
+        Category: "Люкс",
       });
     }
   }
@@ -63,6 +87,7 @@ DecorLuxXlData.forEach((element) => {
         Name: element["Люкс"],
         Thickness: 16,
         Subcategory: slpited[n],
+        Category: "Люкс",
       });
     }
   }
@@ -73,6 +98,7 @@ DecorLuxXlData.forEach((element) => {
         Name: element["Люкс"],
         Thickness: 22,
         Subcategory: slpited[n],
+        Category: "Люкс",
       });
     }
   }
@@ -83,6 +109,7 @@ DecorLuxXlData.forEach((element) => {
         Name: element["Люкс"],
         Thickness: 26,
         Subcategory: slpited[n],
+        Category: "Люкс",
       });
     }
   }
@@ -96,6 +123,7 @@ DecorPremiumXlData.forEach((element) => {
         Name: element["Премиум"],
         Thickness: 10,
         Subcategory: slpited[n],
+        Category: "Премиум",
       });
     }
   }
@@ -106,6 +134,7 @@ DecorPremiumXlData.forEach((element) => {
         Name: element["Премиум"],
         Thickness: 16,
         Subcategory: slpited[n],
+        Category: "Премиум",
       });
     }
   }
@@ -116,6 +145,7 @@ DecorPremiumXlData.forEach((element) => {
         Name: element["Премиум"],
         Thickness: 18,
         Subcategory: slpited[n],
+        Category: "Премиум",
       });
     }
   }
@@ -126,6 +156,7 @@ DecorPremiumXlData.forEach((element) => {
         Name: element["Премиум"],
         Thickness: 22,
         Subcategory: slpited[n],
+        Category: "Премиум",
       });
     }
   }
@@ -136,11 +167,69 @@ DecorPremiumXlData.forEach((element) => {
         Name: element["Премиум"],
         Thickness: 26,
         Subcategory: slpited[n],
+        Category: "Премиум",
       });
     }
   }
 });
-console.log(premiumFullName);
+
+DecorClassicXlData.forEach((element) => {
+  if (element[10] != undefined) {
+    let slpited = element[10].split(",");
+    for (let n = 0; n < slpited.length; n++) {
+      classicFullName.push({
+        Name: element["Классика"],
+        Thickness: 10,
+        Subcategory: slpited[n],
+        Category: "Классика",
+      });
+    }
+  }
+  if (element[16] != undefined) {
+    let slpited = element[16].split(",");
+    for (let n = 0; n < slpited.length; n++) {
+      classicFullName.push({
+        Name: element["Классика"],
+        Thickness: 16,
+        Subcategory: slpited[n],
+        Category: "Классика",
+      });
+    }
+  }
+  if (element[18] != undefined) {
+    let slpited = element[18].split(",");
+    for (let n = 0; n < slpited.length; n++) {
+      classicFullName.push({
+        Name: element["Классика"],
+        Thickness: 18,
+        Subcategory: slpited[n],
+        Category: "Классика",
+      });
+    }
+  }
+  if (element[22] != undefined) {
+    let slpited = element[22].split(",");
+    for (let n = 0; n < slpited.length; n++) {
+      classicFullName.push({
+        Name: element["Классика"],
+        Thickness: 22,
+        Subcategory: slpited[n],
+        Category: "Классика",
+      });
+    }
+  }
+  if (element[26] != undefined) {
+    let slpited = element[26].split(",");
+    for (let n = 0; n < slpited.length; n++) {
+      classicFullName.push({
+        Name: element["Классика"],
+        Thickness: 26,
+        Subcategory: slpited[n],
+        Category: "Классика",
+      });
+    }
+  }
+});
 export {
   SubCategoryXlData,
   MaterialXlData,
@@ -153,4 +242,7 @@ export {
   luxFullName,
   premiumFullName,
   classicFullName,
+  PriceLuxXlData,
+  PriceClassicXlData,
+  PricePremiumXlData,
 };
